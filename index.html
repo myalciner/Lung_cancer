@@ -131,7 +131,6 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-top: 15px;
         }
         
         .continue-btn:hover {
@@ -210,9 +209,8 @@
             <div class="step-indicator" id="step-indicator">Stage 1 / 5</div>
         </header>
         
-        <!-- SCENARIO 1 -->
         <div id="scenario-1" class="scenario-container">
-            <h2 class="scenario-title">Scenario 1: New Diagnosis</h2>
+            <h2 class="scenario-title">Scenario Start: New Diagnosis</h2>
             <div class="scenario-content">
                 <p><strong>Patient:</strong> 58-year-old female with 35 pack/year smoking history.</p>
                 <p><strong>Symptoms:</strong> Persistent cough, loss of appetite, unintentional weight loss of 6 kg over 2 months.</p>
@@ -229,81 +227,94 @@
                 </div>
             </div>
         </div>
-
-        <!-- SCENARIO 2 -->
+        
+        <div id="result-1" class="result-container">
+            <!-- Result content will be populated by JavaScript -->
+        </div>
+        
         <div id="scenario-2" class="scenario-container hidden">
-            <h2 class="scenario-title">Scenario 2: Diagnosis and Staging</h2>
+            <h2 class="scenario-title">Stage 2: Diagnosis and Staging</h2>
             <div class="scenario-content">
-                <p>CT shows a 4.5 cm mass in right upper lobe with pathological lymph nodes.</p>
-                <p>Pathology: <strong>Squamous Cell Lung Carcinoma</strong></p>
+                <p>Based on the patient's imaging results, further diagnostic planning is required.</p>
             </div>
             
             <div class="decision-container">
-                <h3 class="decision-title">Decision 2: Next step for staging?</h3>
+                <h3 class="decision-title">Decision 1B: Your next step after CT?</h3>
                 <div class="options">
-                    <div class="option" onclick="selectOption(2, 'A')">A) PET-CT for complete staging</div>
-                    <div class="option" onclick="selectOption(2, 'B')">B) Brain MRI (patient has headaches)</div>
-                    <div class="option" onclick="selectOption(2, 'C')">Bone scan for bone pain assessment</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SCENARIO 3 -->
-        <div id="scenario-3" class="scenario-container hidden">
-            <h2 class="scenario-title">Scenario 3: Biomarker Testing</h2>
-            <div class="scenario-content">
-                <p>Stage: IIIB (T3N2M0). Patient is eligible for targeted therapy or immunotherapy.</p>
-                <p>PD-L1 testing result: <strong>60%</strong> (High expression)</p>
-            </div>
-            
-            <div class="decision-container">
-                <h3 class="decision-title">Decision 3: First-line treatment choice?</h3>
-                <div class="options">
-                    <div class="option" onclick="selectOption(3, 'A')">A) Immunotherapy monotherapy</div>
-                    <div class="option" onclick="selectOption(3, 'B')">B) Chemotherapy + Immunotherapy</div>
-                    <div class="option" onclick="selectOption(3, 'C')">C) Chemotherapy alone</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SCENARIO 4 -->
-        <div id="scenario-4" class="scenario-container hidden">
-            <h2 class="scenario-title">Scenario 4: Treatment Monitoring</h2>
-            <div class="scenario-content">
-                <p>After 3 cycles of immunotherapy, patient develops rash and diarrhea.</p>
-                <p>These are Grade 2 immune-related adverse events.</p>
-            </div>
-            
-            <div class="decision-container">
-                <h3 class="decision-title">Decision 4: How do you manage these side effects?</h3>
-                <div class="options">
-                    <div class="option" onclick="selectOption(4, 'A')">A) Continue treatment, add topical/symptomatic therapy</div>
-                    <div class="option" onclick="selectOption(4, 'B')">B) Hold immunotherapy, start steroids</div>
-                    <div class="option" onclick="selectOption(4, 'C')">C) Discontinue immunotherapy permanently</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SCENARIO 5 -->
-        <div id="scenario-5" class="scenario-container hidden">
-            <h2 class="scenario-title">Scenario 5: Disease Progression</h2>
-            <div class="scenario-content">
-                <p>After 9 months, follow-up CT shows new liver metastases.</p>
-                <p>The disease has progressed despite initial response.</p>
-            </div>
-            
-            <div class="decision-container">
-                <h3 class="decision-title">Decision 5: Next step for progressive disease?</h3>
-                <div class="options">
-                    <div class="option" onclick="selectOption(5, 'A')">A) Liver biopsy for new genetic testing</div>
-                    <div class="option" onclick="selectOption(5, 'B')">B) Switch to chemotherapy</div>
-                    <div class="option" onclick="selectOption(5, 'C')">C) Clinical trial referral</div>
+                    <div class="option" onclick="selectOption(2, 'A')">A) Perform PET-CT for staging</div>
+                    <div class="option" onclick="selectOption(2, 'B')">B) Bronchoscopy + EBUS for biopsy</div>
                 </div>
             </div>
         </div>
         
+        <div id="result-2" class="result-container">
+            <!-- Result content will be populated by JavaScript -->
+        </div>
+        
+        <div id="scenario-3" class="scenario-container hidden">
+            <h2 class="scenario-title">Stage 3: Biomarker and Treatment Plan</h2>
+            <div class="scenario-content">
+                <p>Pathology report: <strong>Squamous Cell Lung Carcinoma</strong>. Stage: IIIB (T3N2M0).</p>
+                <p>Biomarker evaluation is needed to determine the patient's treatment plan.</p>
+            </div>
+            
+            <div class="decision-container">
+                <h3 class="decision-title">Decision 2: Pathology report is in. Next step?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(3, 'A')">A) Plan chemoradiotherapy directly</div>
+                    <div class="option" onclick="selectOption(3, 'B')">B) Request PD-L1 staining (TPS) on tumor tissue</div>
+                    <div class="option" onclick="selectOption(3, 'C')">C) Start chemotherapy</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="result-3" class="result-container">
+            <!-- Result content will be populated by JavaScript -->
+        </div>
+        
+        <div id="scenario-4" class="scenario-container hidden">
+            <h2 class="scenario-title">Stage 4: Treatment Initiation and First Challenge</h2>
+            <div class="scenario-content">
+                <p>PD-L1 TPS result: <strong>60%</strong>. Based on this result, immunotherapy monotherapy was initiated after discussion with the patient.</p>
+                <p>After the 3rd treatment cycle, the patient complains of mild joint pain and fatigue.</p>
+            </div>
+            
+            <div class="decision-container">
+                <h3 class="decision-title">Decision 3: How do you manage these symptoms?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(4, 'A')">A) These are insignificant, continue treatment.</div>
+                    <div class="option" onclick="selectOption(4, 'B')">B) Skip one dose and observe.</div>
+                    <div class="option" onclick="selectOption(4, 'C')">C) Consider immune-related adverse events, provide symptomatic support with simple analgesics and close monitoring.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="result-4" class="result-container">
+            <!-- Result content will be populated by JavaScript -->
+        </div>
+        
+        <div id="scenario-5" class="scenario-container hidden">
+            <h2 class="scenario-title">Stage 5: Critical Adverse Event Management</h2>
+            <div class="scenario-content">
+                <p>After the 6th treatment cycle, the patient presents to the emergency department with acute onset shortness of breath and dry cough.</p>
+            </div>
+            
+            <div class="decision-container">
+                <h3 class="decision-title">Decision 4A: Your emergency approach?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(5, 'A')">A) Order Chest CT</div>
+                    <div class="option" onclick="selectOption(5, 'B')">B) Immediately start high-dose IV Methylprednisolone (1-2 mg/kg)</div>
+                    <div class="option" onclick="selectOption(5, 'C')">C) Start antibiotics and treat as pneumonia</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="result-5" class="result-container">
+            <!-- Result content will be populated by JavaScript -->
+        </div>
+        
         <div id="final-result" class="scenario-container hidden">
-            <h2 class="scenario-title">Simulation Complete! 🎉</h2>
+            <h2 class="scenario-title">Simulation Complete!</h2>
             <div class="scenario-content" id="final-content">
                 <!-- Final content will be populated by JavaScript -->
             </div>
@@ -318,11 +329,11 @@
         const totalSteps = 5;
         
         const stepTitles = [
-            "New Diagnosis",
+            "Scenario Start",
             "Diagnosis and Staging",
-            "Biomarker Testing",
-            "Treatment Monitoring",
-            "Disease Progression"
+            "Biomarker and Treatment Plan",
+            "Treatment Initiation and First Challenge",
+            "Critical Adverse Event Management"
         ];
         
         function updateProgress() {
@@ -339,179 +350,164 @@
             
             // Show result
             const resultContainer = document.getElementById(`result-${step}`);
-            if (resultContainer) {
-                resultContainer.style.display = 'block';
-            }
+            resultContainer.style.display = 'block';
             
+            // Populate result based on step and option
             let resultHTML = '';
             let feedbackHTML = '';
             let timeLossIncrement = 0;
             let scoreIncrement = 0;
             
-            // Process decision for each step
             switch(step) {
                 case 1:
                     switch(option) {
                         case 'A':
-                            resultHTML = '<h3 class="result-title">✅ Correct Approach</h3><div class="result-content"><p>You ordered Contrast-enhanced Chest CT. This is the most appropriate first step for anatomical evaluation.</p></div>';
+                            resultHTML = '<h3 class="result-title">Correct Approach</h3><div class="result-content"><p>You ordered Contrast-enhanced Chest CT. This is the most appropriate first step to evaluate the anatomical features of the mass and plan biopsy.</p><div class="report"><strong>CT Report:</strong><br>Irregular bordered mass approximately 4.5 cm in diameter in right upper lobe. Pathological lymph nodes in paratracheal and subcarinal areas. Consistent with Stage IIIB (T2bN2M0) lung carcinoma. Suitable for biopsy.</div></div>';
+                            feedbackHTML = '<div class="feedback positive">Excellent! You ordered the correct imaging in the proper sequence. No time was lost.</div>';
                             scoreIncrement = 20;
                             break;
                         case 'B':
-                            resultHTML = '<h3 class="result-title">⚠️ Suboptimal Choice</h3><div class="result-content"><p>PET-CT is excellent for staging but contrast CT provides better anatomical detail for biopsy planning.</p></div>';
+                            resultHTML = '<h3 class="result-title">Early PET-CT</h3><div class="result-content"><p>You ordered direct PET-CT. The radiologist delayed the report, stating that contrast CT was needed first for staging.</p><div class="report"><strong>Radiologist Note:</strong><br>"Anatomical detail insufficient for CT-guided biopsy. Contrast-enhanced Chest CT recommended."</div></div>';
+                            feedbackHTML = '<div class="feedback negative">Diagnostic delay occurred. Contrast CT should have been performed first to evaluate the anatomical features of the mass.</div>';
                             timeLossIncrement = 1;
                             scoreIncrement = 10;
                             break;
                         case 'C':
-                            resultHTML = '<h3 class="result-title">❌ Delayed Diagnosis</h3><div class="result-content"><p>Direct referral without initial imaging causes unnecessary delay in diagnosis.</p></div>';
-                            timeLossIncrement = 2;
+                            resultHTML = '<h3 class="result-title">Immediate Referral</h3><div class="result-content"><p>You referred the patient directly to a Pulmonologist. The specialist could not evaluate without basic imaging and ordered Contrast-enhanced Chest CT.</p><div class="report"><strong>Contrast Chest CT Report (1 Week Later):</strong><br>Irregular bordered mass lesion approximately 4.5 cm in diameter in right upper lobe. Pathological sized lymph nodes present in mediastinum. Primary consideration for lung neoplasm.</div></div>';
+                            feedbackHTML = '<div class="feedback negative">You lost 1 week with pre-imaging referral. You now have the CT result and can proceed to the next step.</div>';
+                            timeLossIncrement = 1;
                             scoreIncrement = 5;
                             break;
                     }
                     break;
-                    
                 case 2:
                     switch(option) {
                         case 'A':
-                            resultHTML = '<h3 class="result-title">✅ Comprehensive Staging</h3><div class="result-content"><p>PET-CT provides complete staging information for treatment planning.</p></div>';
-                            scoreIncrement = 20;
+                            resultHTML = '<h3 class="result-title">Staging First</h3><div class="result-content"><p>You chose to perform PET-CT for staging first. Staging was completed but the pathologist reported that basic CT images were still needed for biopsy and PD-L1 testing since you had no diagnostic sample.</p></div>';
+                            feedbackHTML = '<div class="feedback negative">Diagnostic delay occurred. Biopsy for diagnosis should be performed first, then staging.</div>';
+                            timeLossIncrement = 1;
+                            scoreIncrement = 10;
                             break;
                         case 'B':
-                            resultHTML = '<h3 class="result-title">⚠️ Limited Staging</h3><div class="result-content"><p>Brain MRI is important but PET-CT provides more comprehensive staging.</p></div>';
-                            scoreIncrement = 15;
-                            break;
-                        case 'C':
-                            resultHTML = '<h3 class="result-title">❌ Incomplete Approach</h3><div class="result-content"><p>Bone scan alone is insufficient for complete lung cancer staging.</p></div>';
-                            timeLossIncrement = 1;
-                            scoreIncrement = 5;
+                            resultHTML = '<h3 class="result-title">Correct Sequence</h3><div class="result-content"><p>You requested bronchoscopy with biopsy from the mass and EBUS from lymph nodes. This is the correct sequence.</p><div class="report"><strong>Pathology Report:</strong><br>Squamous Cell Lung Carcinoma. Stage: IIIB (T3N2M0).</div></div>';
+                            feedbackHTML = '<div class="feedback positive">Excellent! You established the diagnosis first. You can now proceed to staging and biomarker tests.</div>';
+                            scoreIncrement = 20;
                             break;
                     }
                     break;
-                    
                 case 3:
                     switch(option) {
                         case 'A':
-                            resultHTML = '<h3 class="result-title">✅ Guideline-Recommended</h3><div class="result-content"><p>With PD-L1 ≥50%, immunotherapy monotherapy is standard first-line treatment.</p></div>';
-                            scoreIncrement = 25;
+                            resultHTML = '<h3 class="result-title">Incomplete Evaluation</h3><div class="result-content"><p>You planned chemoradiotherapy directly. However, you risk missing the opportunity for immunotherapy in a patient who may have high PD-L1 expression.</p></div>';
+                            feedbackHTML = '<div class="feedback negative">PD-L1 testing was skipped. The patient\'s chance of benefiting from immunotherapy was not evaluated.</div>';
+                            scoreIncrement = 5;
                             break;
                         case 'B':
-                            resultHTML = '<h3 class="result-title">⚠️ Alternative Option</h3><div class="result-content"><p>Chemo-immunotherapy is also effective but monotherapy preferred for high PD-L1.</p></div>';
-                            scoreIncrement = 15;
+                            resultHTML = '<h3 class="result-title">Gold Standard</h3><div class="result-content"><p>You requested PD-L1 staining. This is critical for patient selection for immunotherapy.</p><div class="report"><strong>PD-L1 TPS Result: 60%</strong><br>This result indicates the patient is a strong candidate for immunotherapy monotherapy.</div></div>';
+                            feedbackHTML = '<div class="feedback positive">Excellent! You evaluated the patient\'s suitability for personalized therapy with biomarker testing.</div>';
+                            scoreIncrement = 20;
                             break;
                         case 'C':
-                            resultHTML = '<h3 class="result-title">❌ Suboptimal Choice</h3><div class="result-content"><p>With high PD-L1, immunotherapy provides better outcomes than chemotherapy alone.</p></div>';
+                            resultHTML = '<h3 class="result-title">Outdated Approach</h3><div class="result-content"><p>You started chemotherapy directly. In this patient with potentially high PD-L1 expression, immunotherapy might have been a more effective option.</p></div>';
+                            feedbackHTML = '<div class="feedback negative">The patient was deprived of the potential superiority of immunotherapy.</div>';
                             scoreIncrement = 5;
                             break;
                     }
                     break;
-                    
                 case 4:
                     switch(option) {
                         case 'A':
-                            resultHTML = '<h3 class="result-title">✅ Appropriate Management</h3><div class="result-content"><p>Grade 2 irAEs can often be managed with supportive care while continuing treatment.</p></div>';
-                            scoreIncrement = 20;
+                            resultHTML = '<h3 class="result-title">Insufficient Assessment</h3><div class="result-content"><p>You considered the side effects insignificant and continued treatment. The patient returned at the next follow-up with much more severe arthritis-like complaints. The adverse event had progressed.</p></div>';
+                            feedbackHTML = '<div class="feedback negative">Immune-related adverse events should be recognized and managed early.</div>';
+                            scoreIncrement = 5;
                             break;
                         case 'B':
-                            resultHTML = '<h3 class="result-title">⚠️ Overly Aggressive</h3><div class="result-content"><p>Steroids may not be needed yet for Grade 2 events. Try symptomatic management first.</p></div>';
+                            resultHTML = '<h3 class="result-title">Unnecessary Interruption</h3><div class="result-content"><p>You skipped one dose. An effective treatment was unnecessarily interrupted. This is a protocol deviation.</p></div>';
+                            feedbackHTML = '<div class="feedback negative">For Grade 1 adverse events, management with supportive care is more appropriate than discontinuing the drug.</div>';
                             scoreIncrement = 10;
                             break;
                         case 'C':
-                            resultHTML = '<h3 class="result-title">❌ Premature Discontinuation</h3><div class="result-content"><p>Grade 2 events don\'t typically require permanent discontinuation of effective therapy.</p></div>';
+                            resultHTML = '<h3 class="result-title">Correct Management</h3><div class="result-content"><p>Rash and diarrhea are common, usually Grade 1-2 adverse events with immunotherapy. You provided support with topical cream and antidiarrheals while continuing the drug.</p></div>';
+                            feedbackHTML = '<div class="feedback positive">Excellent! You correctly managed mild immune-related adverse events. The patient continues to benefit from treatment.</div>';
+                            scoreIncrement = 20;
+                            break;
+                    }
+                    break;
+                case 5:
+                    switch(option) {
+                        case 'A':
+                            resultHTML = '<h3 class="result-title">Critical Importance</h3><div class="result-content"><p>You ordered a Chest CT. Widespread "ground-glass" opacities were seen in both lungs on CT. This is the radiological finding of immune-related pneumonitis.</p><div class="report"><strong>CT Report:</strong><br>Extensive ground-glass opacities in both lungs. No evidence of infectious etiology or cardiac failure. Consistent with immune-related pneumonitis.</div></div>';
+                            feedbackHTML = '<div class="feedback positive">You took the first step toward correct diagnosis. Immune-related pneumonitis is considered Grade 2. Immunotherapy is temporarily stopped and high-dose steroids are started.</div>';
+                            scoreIncrement = 20;
+                            break;
+                        case 'B':
+                            resultHTML = '<h3 class="result-title">Overreaction</h3><div class="result-content"><p>You started steroids without ruling out infection. If there is an underlying infection, you may worsen the condition.</p></div>';
+                            feedbackHTML = '<div class="feedback negative">Starting immunosuppressive therapy without ruling out infection is risky. Diagnostic evaluation should be performed first.</div>';
+                            scoreIncrement = 5;
+                            break;
+                        case 'C':
+                            resultHTML = '<h3 class="result-title">Incorrect Diagnosis</h3><div class="result-content"><p>You started antibiotics and treated as pneumonia. Antibiotics are ineffective, the patient continues to deteriorate and may require intensive care.</p></div>';
+                            feedbackHTML = '<div class="feedback negative">Immune-related pneumonitis is managed differently from infectious pneumonia. Incorrect diagnosis can lead to serious consequences.</div>';
                             scoreIncrement = 5;
                             break;
                     }
                     break;
-                    
-                case 5:
-                    switch(option) {
-                        case 'A':
-                            resultHTML = '<h3 class="result-title">✅ Optimal Approach</h3><div class="result-content"><p>Biopsy at progression can reveal new mutations and guide next-line therapy.</p></div>';
-                            scoreIncrement = 25;
-                            break;
-                        case 'B':
-                            resultHTML = '<h3 class="result-title">⚠️ Reasonable Alternative</h3><div class="result-content"><p>Chemotherapy is standard but re-biopsy can provide personalized options.</p></div>';
-                            scoreIncrement = 15;
-                            break;
-                        case 'C':
-                            resultHTML = '<h3 class="result-title">⚠️ Good Consideration</h3><div class="result-content"><p>Clinical trials are excellent but should include tissue analysis when possible.</p></div>';
-                            scoreIncrement = 15;
-                            break;
-                    }
-                    break;
             }
             
-            // Update scores
+            // Update time loss and score
             timeLoss += timeLossIncrement;
             score += scoreIncrement;
             
-            // Build result display
-            let displayHTML = resultHTML;
-            
+            // Add time loss info if applicable
             if (timeLossIncrement > 0) {
-                displayHTML += `<div class="time-loss">Time Loss: +${timeLossIncrement} week (Total: ${timeLoss} weeks)</div>`;
+                resultHTML += `<div class="time-loss">Time Loss: +${timeLossIncrement} week (Total: ${timeLoss} weeks)</div>`;
             }
             
-            displayHTML += feedbackHTML;
+            // Add feedback
+            resultHTML += feedbackHTML;
             
-            // Show next scenario or final result
-            if (step < totalSteps) {
-                displayHTML += `<button class="continue-btn" onclick="nextScenario(${step})">Continue to Next Scenario</button>`;
-                if (resultContainer) {
-                    resultContainer.innerHTML = displayHTML;
-                }
-            } else {
-                // Last scenario - show final results
+            // Add continue button
+            resultHTML += `<button class="continue-btn" onclick="continueToNextStep(${step})">Continue</button>`;
+            
+            // Display result
+            resultContainer.innerHTML = resultHTML;
+        }
+        
+        function continueToNextStep(step) {
+            // Hide current result
+            document.getElementById(`result-${step}`).style.display = 'none';
+            
+            // If this is the last step, show final result
+            if (step === totalSteps) {
                 showFinalResult();
                 return;
             }
             
-            if (resultContainer) {
-                resultContainer.innerHTML = displayHTML;
-            }
-            updateProgress();
-        }
-        
-        function nextScenario(currentStep) {
-            // Hide current result
-            const currentResult = document.getElementById(`result-${currentStep}`);
-            if (currentResult) {
-                currentResult.style.display = 'none';
-            }
-            
             // Show next scenario
-            const nextStep = currentStep + 1;
-            document.getElementById(`scenario-${nextStep}`).classList.remove('hidden');
+            currentStep = step + 1;
+            document.getElementById(`scenario-${currentStep}`).classList.remove('hidden');
             
             // Update progress
-            currentStep = nextStep;
             updateProgress();
         }
         
         function showFinalResult() {
-            // Hide all scenarios and results
-            for (let i = 1; i <= totalSteps; i++) {
-                const scenario = document.getElementById(`scenario-${i}`);
-                const result = document.getElementById(`result-${i}`);
-                if (scenario) scenario.classList.add('hidden');
-                if (result) result.style.display = 'none';
-            }
-            
-            // Show final result
             document.getElementById('final-result').classList.remove('hidden');
             
-            let finalHTML = `<p>You have completed the clinical simulation! Here is your performance evaluation:</p>`;
+            let finalHTML = `<p>You have completed the simulation! Here is your performance evaluation:</p>`;
             finalHTML += `<div class="report" style="margin-top: 15px;">`;
             finalHTML += `<p><strong>Total Score: ${score} / 100</strong></p>`;
             finalHTML += `<p><strong>Total Time Loss: ${timeLoss} weeks</strong></p>`;
-            finalHTML += `<p><strong>Clinical Competency:</strong> `;
+            finalHTML += `<p><strong>Evaluation:</strong> `;
             
             if (score >= 90) {
-                finalHTML += `Excellent! Your clinical decision-making demonstrates advanced expertise.`;
+                finalHTML += `Excellent! Your clinical decision-making process is very successful.`;
             } else if (score >= 70) {
-                finalHTML += `Proficient! You made mostly correct clinical decisions with some areas for refinement.`;
+                finalHTML += `Good! You generally made correct decisions, but there is room for improvement in some areas.`;
             } else if (score >= 50) {
-                finalHTML += `Developing! There are significant opportunities to improve your clinical decision-making.`;
+                finalHTML += `Average! You struggled with some critical decision points. It would be beneficial to review the topic again.`;
             } else {
-                finalHTML += `Needs improvement! Review lung cancer guidelines and treatment protocols.`;
+                finalHTML += `There are significant deficiencies in your clinical decision-making process. It is recommended that you study the topic in detail.`;
             }
             
             finalHTML += `</p></div>`;
@@ -527,21 +523,21 @@
             
             // Hide all scenarios and results
             for (let i = 1; i <= totalSteps; i++) {
-                const scenario = document.getElementById(`scenario-${i}`);
-                const result = document.getElementById(`result-${i}`);
-                if (scenario) scenario.classList.add('hidden');
-                if (result) result.style.display = 'none';
+                document.getElementById(`scenario-${i}`).classList.add('hidden');
+                document.getElementById(`result-${i}`).style.display = 'none';
             }
+            
+            // Hide final result
+            document.getElementById('final-result').classList.add('hidden');
             
             // Show first scenario
             document.getElementById('scenario-1').classList.remove('hidden');
-            document.getElementById('final-result').classList.add('hidden');
             
             // Reset progress
             updateProgress();
         }
         
-        // Initialize
+        // Initialize progress bar
         updateProgress();
     </script>
 </body>
