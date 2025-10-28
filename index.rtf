@@ -1,0 +1,360 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Clinical Decision Tree Simulation - Lung Cancer</title>\
+    <style>\
+        * \{\
+            box-sizing: border-box;\
+            margin: 0;\
+            padding: 0;\
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\
+        \}\
+        \
+        body \{\
+            background-color: #f5f7fa;\
+            color: #333;\
+            line-height: 1.6;\
+            padding: 20px;\
+        \}\
+        \
+        .container \{\
+            max-width: 900px;\
+            margin: 0 auto;\
+            background-color: white;\
+            border-radius: 10px;\
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);\
+            padding: 30px;\
+            position: relative;\
+            overflow: hidden;\
+        \}\
+        \
+        header \{\
+            text-align: center;\
+            margin-bottom: 30px;\
+            padding-bottom: 20px;\
+            border-bottom: 1px solid #eaeaea;\
+        \}\
+        \
+        h1 \{\
+            color: #2c3e50;\
+            margin-bottom: 10px;\
+            font-size: 28px;\
+        \}\
+        \
+        .subtitle \{\
+            color: #7f8c8d;\
+            font-size: 18px;\
+            margin-bottom: 20px;\
+        \}\
+        \
+        .scenario-container \{\
+            background-color: #f8f9fa;\
+            border-radius: 8px;\
+            padding: 20px;\
+            margin-bottom: 25px;\
+            border-left: 4px solid #3498db;\
+        \}\
+        \
+        .scenario-title \{\
+            font-size: 20px;\
+            color: #2c3e50;\
+            margin-bottom: 15px;\
+        \}\
+        \
+        .scenario-content \{\
+            font-size: 16px;\
+            line-height: 1.7;\
+        \}\
+        \
+        .decision-container \{\
+            margin-top: 25px;\
+        \}\
+        \
+        .decision-title \{\
+            font-size: 18px;\
+            color: #2c3e50;\
+            margin-bottom: 15px;\
+        \}\
+        \
+        .options \{\
+            display: flex;\
+            flex-direction: column;\
+            gap: 12px;\
+        \}\
+        \
+        .option \{\
+            background-color: white;\
+            border: 2px solid #e0e0e0;\
+            border-radius: 8px;\
+            padding: 15px;\
+            cursor: pointer;\
+            transition: all 0.3s ease;\
+            font-size: 16px;\
+        \}\
+        \
+        .option:hover \{\
+            background-color: #f1f8ff;\
+            border-color: #3498db;\
+            transform: translateY(-2px);\
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\
+        \}\
+        \
+        .result-container \{\
+            display: none;\
+            margin-top: 25px;\
+            padding: 20px;\
+            border-radius: 8px;\
+            background-color: #f8f9fa;\
+            border-left: 4px solid #e74c3c;\
+        \}\
+        \
+        .result-title \{\
+            font-size: 18px;\
+            color: #2c3e50;\
+            margin-bottom: 15px;\
+        \}\
+        \
+        .result-content \{\
+            font-size: 16px;\
+            line-height: 1.7;\
+            margin-bottom: 20px;\
+        \}\
+        \
+        .continue-btn \{\
+            background-color: #3498db;\
+            color: white;\
+            border: none;\
+            border-radius: 6px;\
+            padding: 12px 24px;\
+            font-size: 16px;\
+            cursor: pointer;\
+            transition: background-color 0.3s;\
+        \}\
+        \
+        .continue-btn:hover \{\
+            background-color: #2980b9;\
+        \}\
+        \
+        .time-loss \{\
+            color: #e74c3c;\
+            font-weight: bold;\
+            margin-top: 10px;\
+        \}\
+        \
+        .report \{\
+            background-color: #fff;\
+            border: 1px solid #ddd;\
+            border-radius: 6px;\
+            padding: 15px;\
+            margin-top: 15px;\
+            font-family: monospace;\
+            font-size: 14px;\
+            line-height: 1.5;\
+        \}\
+        \
+        .progress-bar \{\
+            height: 8px;\
+            background-color: #ecf0f1;\
+            border-radius: 4px;\
+            margin-bottom: 20px;\
+            overflow: hidden;\
+        \}\
+        \
+        .progress \{\
+            height: 100%;\
+            background-color: #3498db;\
+            width: 0%;\
+            transition: width 0.5s ease;\
+        \}\
+        \
+        .step-indicator \{\
+            text-align: center;\
+            color: #7f8c8d;\
+            margin-bottom: 20px;\
+            font-size: 14px;\
+        \}\
+        \
+        .feedback \{\
+            margin-top: 15px;\
+            padding: 12px;\
+            border-radius: 6px;\
+            font-size: 14px;\
+        \}\
+        \
+        .positive \{\
+            background-color: #d5f4e6;\
+            border-left: 4px solid #2ecc71;\
+        \}\
+        \
+        .negative \{\
+            background-color: #fdeaea;\
+            border-left: 4px solid #e74c3c;\
+        \}\
+        \
+        .hidden \{\
+            display: none;\
+        \}\
+    </style>\
+</head>\
+<body>\
+    <div class="container">\
+        <header>\
+            <h1>Clinical Decision Tree Simulation</h1>\
+            <div class="subtitle">Lung Cancer Case - Immunotherapy Focus</div>\
+            <div class="progress-bar">\
+                <div class="progress" id="progress"></div>\
+            </div>\
+            <div class="step-indicator" id="step-indicator">Stage 1 / 5</div>\
+        </header>\
+        \
+        <div id="scenario-1" class="scenario-container">\
+            <h2 class="scenario-title">Scenario Start: New Diagnosis</h2>\
+            <div class="scenario-content">\
+                <p><strong>Patient:</strong> 58-year-old female with 35 pack/year smoking history.</p>\
+                <p><strong>Symptoms:</strong> Persistent cough, loss of appetite, unintentional weight loss of 6 kg over 2 months.</p>\
+                <p><strong>Examination:</strong> Normal.</p>\
+                <p><strong>Chest X-ray:</strong> Suspicious mass in right lung.</p>\
+            </div>\
+            \
+            <div class="decision-container">\
+                <h3 class="decision-title">Decision 1A: Your initial imaging choice?</h3>\
+                <div class="options">\
+                    <div class="option" onclick="selectOption(1, 'A')">A) Contrast-enhanced Chest and Upper Abdomen CT</div>\
+                    <div class="option" onclick="selectOption(1, 'B')">B) Direct PET-CT</div>\
+                    <div class="option" onclick="selectOption(1, 'C')">C) Refer patient to Pulmonology</div>\
+                </div>\
+            </div>\
+        </div>\
+        \
+        <div id="result-1" class="result-container">\
+            <!-- Result content will be populated by JavaScript -->\
+        </div>\
+        \
+        <div id="final-result" class="scenario-container hidden">\
+            <h2 class="scenario-title">Simulation Complete!</h2>\
+            <div class="scenario-content" id="final-content">\
+                <!-- Final content will be populated by JavaScript -->\
+            </div>\
+            <button class="continue-btn" onclick="restartSimulation()">Restart Simulation</button>\
+        </div>\
+    </div>\
+\
+    <script>\
+        let currentStep = 1;\
+        let timeLoss = 0;\
+        let score = 0;\
+        const totalSteps = 5;\
+        \
+        const stepTitles = [\
+            "Scenario Start",\
+            "Diagnosis and Staging",\
+            "Biomarker and Treatment Plan",\
+            "Treatment Initiation and First Challenge",\
+            "Critical Adverse Event Management"\
+        ];\
+        \
+        function updateProgress() \{\
+            const progress = document.getElementById('progress');\
+            const stepIndicator = document.getElementById('step-indicator');\
+            const percentage = (currentStep / totalSteps) * 100;\
+            progress.style.width = `$\{percentage\}%`;\
+            stepIndicator.textContent = `Stage $\{currentStep\} / $\{totalSteps\} - $\{stepTitles[currentStep-1]\}`;\
+        \}\
+        \
+        function selectOption(step, option) \{\
+            document.getElementById(`scenario-$\{step\}`).classList.add('hidden');\
+            \
+            const resultContainer = document.getElementById(`result-$\{step\}`);\
+            resultContainer.style.display = 'block';\
+            \
+            let resultHTML = '';\
+            let feedbackHTML = '';\
+            let timeLossIncrement = 0;\
+            let scoreIncrement = 0;\
+            \
+            switch(step) \{\
+                case 1:\
+                    switch(option) \{\
+                        case 'A':\
+                            resultHTML = '<h3 class="result-title">Correct Approach</h3><div class="result-content"><p>You ordered Contrast-enhanced Chest CT. This is the most appropriate first step.</p><div class="report"><strong>CT Report:</strong><br>Mass in right upper lobe. Pathological lymph nodes. Consistent with Stage IIIB lung carcinoma.</div></div>';\
+                            feedbackHTML = '<div class="feedback positive">Excellent! You ordered the correct imaging in the proper sequence.</div>';\
+                            scoreIncrement = 20;\
+                            break;\
+                        case 'B':\
+                            resultHTML = '<h3 class="result-title">Early PET-CT</h3><div class="result-content"><p>You ordered direct PET-CT. The radiologist delayed the report.</p></div>';\
+                            feedbackHTML = '<div class="feedback negative">Diagnostic delay occurred.</div>';\
+                            timeLossIncrement = 1;\
+                            scoreIncrement = 10;\
+                            break;\
+                        case 'C':\
+                            resultHTML = '<h3 class="result-title">Immediate Referral</h3><div class="result-content"><p>You referred the patient directly to a Pulmonologist.</p></div>';\
+                            feedbackHTML = '<div class="feedback negative">You lost 1 week with pre-imaging referral.</div>';\
+                            timeLossIncrement = 1;\
+                            scoreIncrement = 5;\
+                            break;\
+                    \}\
+                    break;\
+            \}\
+            \
+            timeLoss += timeLossIncrement;\
+            score += scoreIncrement;\
+            \
+            if (timeLossIncrement > 0) \{\
+                resultHTML += `<div class="time-loss">Time Loss: +$\{timeLossIncrement\} week (Total: $\{timeLoss\} weeks)</div>`;\
+            \}\
+            \
+            resultHTML += feedbackHTML;\
+            resultHTML += `<button class="continue-btn" onclick="showFinalResult()">Complete Simulation</button>`;\
+            \
+            resultContainer.innerHTML = resultHTML;\
+            updateProgress();\
+        \}\
+        \
+        function showFinalResult() \{\
+            document.getElementById('result-1').style.display = 'none';\
+            document.getElementById('final-result').classList.remove('hidden');\
+            \
+            let finalHTML = `<p>You have completed the simulation! Here is your performance evaluation:</p>`;\
+            finalHTML += `<div class="report" style="margin-top: 15px;">`;\
+            finalHTML += `<p><strong>Total Score: $\{score\} / 100</strong></p>`;\
+            finalHTML += `<p><strong>Total Time Loss: $\{timeLoss\} weeks</strong></p>`;\
+            finalHTML += `<p><strong>Evaluation:</strong> `;\
+            \
+            if (score >= 90) \{\
+                finalHTML += `Excellent! Your clinical decision-making process is very successful.`;\
+            \} else if (score >= 70) \{\
+                finalHTML += `Good! You generally made correct decisions.`;\
+            \} else \{\
+                finalHTML += `There is room for improvement in your clinical decision-making.`;\
+            \}\
+            \
+            finalHTML += `</p></div>`;\
+            \
+            document.getElementById('final-content').innerHTML = finalHTML;\
+        \}\
+        \
+        function restartSimulation() \{\
+            currentStep = 1;\
+            timeLoss = 0;\
+            score = 0;\
+            \
+            document.getElementById('scenario-1').classList.remove('hidden');\
+            document.getElementById('result-1').style.display = 'none';\
+            document.getElementById('final-result').classList.add('hidden');\
+            \
+            updateProgress();\
+        \}\
+        \
+        updateProgress();\
+    </script>\
+</body>\
+</html>}
